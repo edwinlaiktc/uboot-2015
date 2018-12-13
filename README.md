@@ -33,6 +33,7 @@
 ## Introductions 
  * Source(freescale original) : [imx uboot 2015.4 src]
  * Tutorial : [Uboot Series](https://edwinlinuxlife.blogspot.com/2018/12/uboot-with-imx6-part-1.html)
+ * Documents : [Uboot2015-Wiki](https://github.com/edwinlaiktc/uboot-2015/wiki)
 
 ### Release Note
  * Current Modified Version : v1.0.0

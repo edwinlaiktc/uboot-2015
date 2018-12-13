@@ -5,35 +5,52 @@
 <br>
 
 <div align="center">
+	This is the source code from [freescale imx 2015 branch].
+	<br>Modified by Edwin, for customer LPDDR2 platform,
+	<br>built with iMX6 series controller.
+	<br>With SD card ONLY, and output with Rs232.
+	<br>This iMX6 UBoot 2015 is for LPDDR2 DRAM,but also can be used with LPDDR3 if needed.
+</div>
+
+<div align="center">
   <a href="https://travis-ci.org/edwinlaiktc/uboot-2015">
     <img src="https://travis-ci.org/edwinlaiktc/uboot-2015.svg?branch=master" alt="Build status" />
   </a>
 </div>
 
-> This is the source code from [freescale imx 2015 branch].
-<br >Modified by Edwin, for customer LPDDR2 platform,
-<br >built with iMX6 series controller.
-<br >With SD card ONLY, and output with Rs232.
-<br >This iMX6 UBoot 2015 is for LPDDR2 DRAM,but also can be used with LPDDR3 if needed.
+<br >
 
     The program is provided AS IS with NO WARRANTY OF ANY KIND,
     INCLUDING THE WARRANTY OF DESIGN,
     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
-## About 
+## Introductions 
  * Source(freescale original) : [imx uboot 2015.4 src]
+ * Tutorial : [Uboot Series](https://edwinlinuxlife.blogspot.com/2018/12/uboot-with-imx6-part-1.html)
 
 ### Release Note
  * Current Modified Version : v1.0.0
  * Modified Note : [[Modified Note](CHANGELOG.md)]
 
+#### Uboot Compiler mapping table
+| Version | Compiler | ARCH | Platform |
+| ----------------- | ------------- | ----- | ------------- |
+| imx-uboot-2015 | GCC4.8, GCC5.4.0 | arm | Ubuntu16.04LTS |
+
 ## Build your own UBoot
+#### Requirements
+```bash
+sudo apt-get install libc6-armel-cross libc6-dev-armel-cross binutils-arm-linux-gnueabi libncurses5-dev
+sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
+sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+```
+
 #### Complied uboot
 To build uboot, just running script __build_uboot.sh__. <br>
 
 ```bash
-	# default platform is set as mx6_ktc_defconfig
-	./build_uboot.sh <your_platform_defconfig>
+# default platform is set as mx6_ktc_defconfig
+./build_uboot.sh <your_platform_defconfig>
 ```
 
 #### Dump to SD Card
@@ -41,8 +58,8 @@ Also, running script __dd_uboot.sh__ to dump uboot to specific address of SD car
 Default device name is "c", which fit to my usage, change it if needed.
 
 ```bash
-	# <X> will be device name of your sd card, ig. /dev/sdc => c
-	./dd_uboot.sh <X>
+# <X> will be device name of your sd card, ig. /dev/sdc => c
+./dd_uboot.sh <X>
 ```
 
 ## Directory Hierarchy
@@ -85,11 +102,6 @@ uboot-2015
 └── tools		Tools to build S-Record or U-Boot images, etc.
 
 ```
-
-## Uboot Compiler mapping table
-| Version | Compiler | ARCH | Platform |
-| ----------------- | ------------- | ----- | ------------- |
-| imx-uboot-2015 | GCC4.8, GCC5.4.0 | arm | Ubuntu16.04LTS |
 
 ## License
 Disclaimer: Everything you see here are free for studying and none-profit usage.

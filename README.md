@@ -16,6 +16,9 @@
   <a href="https://travis-ci.org/edwinlaiktc/uboot-2015">
     <img src="https://travis-ci.org/edwinlaiktc/uboot-2015.svg?branch=master" alt="Build status" />
   </a>
+  <a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/i.mx-applications-processors/i.mx-6-processors/i.mx-6quad-processors-high-performance-3d-graphics-hd-video-arm-cortex-a9-core:i.MX6Q">
+    <img src="https://img.shields.io/badge/arm-iMX6-orange.svg" alt="Platform"/>
+  </a>
   <a href="https://ftp.gnu.org/gnu/gcc/">
     <img src="https://img.shields.io/badge/gcc-4.8%20%7C%205.4.0-brightgreen.svg" alt="Compiler"/>
   </a>

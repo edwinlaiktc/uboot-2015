@@ -41,6 +41,7 @@
 #
 !.gitignore
 !.mailmap
+!.travis.yml
 
 #
 # Generated files

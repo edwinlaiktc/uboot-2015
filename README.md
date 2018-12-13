@@ -47,6 +47,8 @@ Default device name is "c", which fit to my usage, change it if needed.
 
 ## Directory Hierarchy
 
+```bash
+
 uboot-2015
 ├──arch			Architecture specific files
 │   ├──arc		Files generic to ARC architecture
@@ -82,9 +84,11 @@ uboot-2015
 ├── test		Various unit test files
 └── tools		Tools to build S-Record or U-Boot images, etc.
 
+```
+
 ## Uboot Compiler mapping table
 | Version | Compiler | ARCH | Platform |
-| ----------------- |: ------------- :| -----:| -------------:|
+| ----------------- | ------------- | ----- | ------------- |
 | imx-uboot-2015 | GCC4.8, GCC5.4.0 | arm | Ubuntu16.04LTS |
 
 ## License

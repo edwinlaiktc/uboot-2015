@@ -43,6 +43,7 @@ env:
     - HOSTCC="cc"
     - HOSTCXX="c++"
     - TEST_CONFIG_CMD=""
+    - ARCH="arm"
 
 before_script:
   # install toolchains based on INSTALL_TOOLCHAIN} variable
@@ -77,12 +78,12 @@ matrix:
           INSTALL_TOOLCHAIN="arm"
           CROSS_COMPILE="/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi/arm-linux-gnueabi-"
     - env:
-        - TEST_CONFIG_CMD="make mx6_ktc_defconfig"
-          TEST_CMD="make -j4"
-          ARCH = "arm"
+        - ARCH = "arm"
+          HOSTCC  = "arm-linux-gnueabihf-gcc"
+          HOSTCXX  = "arm-linux-gnueabihf-g++"
           CROSS_COMPILE = "arm-linux-gnueabihf-"
-          HOSTCC  = "gcc"
-          HOSTCXX  = "g++"
+          TEST_CONFIG_CMD="make mx6_ktc_defconfig"
+          TEST_CMD="make -j4"
     - env:
         - TEST_CONFIG_CMD="make sandbox_defconfig"
           TEST_CMD="make -j4"

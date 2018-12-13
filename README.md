@@ -26,14 +26,14 @@
 
 ### Release Note
  * Current Modified Version : v1.0.0
- * Modified Note : [Modified Note]
+ * Modified Note : [[Modified Note](CHANGELOG.md)]
 
 ### Copyright
-`Copyright © Kingston Technology Corp.`
+Disclaimer: Everything you see here are free for studying and none-profit usage.
+Also make sure you comply with the [license](LICENSE).
 
-`Developed by : RD Module | Edwin Lai`
+`Copyright © Kingston Technology Corp.`
+`Developed by : RD Module | Edwin Lai & Sam Cheng`
 
 [freescale imx 2015 branch]: <http://git.freescale.com/git/cgit.cgi/imx/uboot-imx.git/?h=imx_v2015.04_3.14.52_1.1.0_ga>
 [imx uboot 2015.4 src]: <http://git.freescale.com/git/cgit.cgi/imx/uboot-imx.git/snapshot/uboot-imx-imx_v2015.04_3.14.52_1.1.0_ga.tar.gz>
-[Modified Note](CHANGELOG.md)
-[License](LICENSE)

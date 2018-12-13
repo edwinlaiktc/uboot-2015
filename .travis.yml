@@ -14,6 +14,10 @@ install:
  # install latest device tree compiler
  - git clone --depth=1 https://git.kernel.org/pub/scm/utils/dtc/dtc.git /tmp/dtc
  - make -j4 -C /tmp/dtc
+ # install cross compile dependencies
+ - sudo apt-get install libc6-armel-cross libc6-dev-armel-cross binutils-arm-linux-gnueabi libncurses5-dev
+ - sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
+ - sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
  # prepare buildman environment
  - export BUILDMAN_ROOT="root:"
  - export BUILDMAN_MIPS="mips:"
@@ -69,24 +73,14 @@ matrix:
           INSTALL_TOOLCHAIN="arm"
           CROSS_COMPILE="/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi/arm-linux-gnueabi-"
     - env:
-        - TEST_CMD="./MAKEALL -a arm -v denx"
-          INSTALL_TOOLCHAIN="arm"
-          CROSS_COMPILE="/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi/arm-linux-gnueabi-"
-    - env:
         - TEST_CMD="./MAKEALL -a arm -v freescale"
           INSTALL_TOOLCHAIN="arm"
           CROSS_COMPILE="/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi/arm-linux-gnueabi-"
     - env:
-        - TEST_CMD="./MAKEALL -a arm -v siemens"
-          INSTALL_TOOLCHAIN="arm"
-          CROSS_COMPILE="/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi/arm-linux-gnueabi-"
-    - env:
-        - TEST_CMD="./MAKEALL -a arm -v ti"
-          INSTALL_TOOLCHAIN="arm"
-          CROSS_COMPILE="/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi/arm-linux-gnueabi-"
-    - env:
-        - TEST_CONFIG_CMD="make sandbox_defconfig"
+        - TEST_CONFIG_CMD="make mx6_ktc_defconfig"
           TEST_CMD="make -j4"
+          ARCH = "arm"
+          CROSS_COMPILE = "arm-linux-gnueabihf-"
           HOSTCC  = "gcc"
           HOSTCXX  = "g++"
     - env:
@@ -94,62 +88,6 @@ matrix:
           TEST_CMD="make -j4"
           HOSTCC  = "clang"
           HOSTCXX  = "clang++"
-    - env:
-        - TEST_CMD="./MAKEALL -a mips"
-          INSTALL_TOOLCHAIN="mips"
-          CROSS_COMPILE="/opt/eldk-5.4/mips/sysroots/i686-eldk-linux/usr/bin/mips32-linux/mips-linux-"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards arm1136"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards arm1176"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards arm720t"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards arm920t"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards atmel -x avr32"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards avr32"
-          INSTALL_TOOLCHAIN="avr32"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards davinci"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards denx"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards freescale -x powerpc,m68k,aarch64"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards freescale -x arm,m68k,aarch64"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards sandbox x86"
-          INSTALL_TOOLCHAIN="i386"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards kirkwood"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards m68k"
-          INSTALL_TOOLCHAIN="m68k"
     - env:
         - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
           TEST_CMD="tools/buildman/buildman mips"

@@ -118,17 +118,19 @@ unsigned imx_ddr_size(void)
 	unsigned misc = readl(&mem->misc);
 	int bits = 11 + 0 + 0 + 1;      /* row + col + bank + width */
 
+	printf("\ndefault bits=%d\n
+		row + col + bank + width(11 + 0 + 0 + 1)\n", bits);
 	bits += ESD_MMDC_CTL_GET_ROW(ctl);
-printf("bits=%d\n",bits);
+	printf("Add Row, bits=%d\n", bits);
 	bits += col_lookup[ESD_MMDC_CTL_GET_COLUMN(ctl)];
-printf("bits=%d\n",bits);
+	printf("Add Col, bits=%d\n",bits);
 	bits += bank_lookup[ESD_MMDC_MISC_GET_BANK(misc)];
-printf("bits=%d\n",bits);
+	printf("Add Bank, bits=%d\n",bits);
 	bits += ESD_MMDC_CTL_GET_WIDTH(ctl);
-printf("bits=%d\n",bits);
+	printf("Add Width, bits=%d\n",bits);
 	bits += ESD_MMDC_CTL_GET_CS1(ctl);
+	printf("Add CS, bits=%d\n", bits);
 
-printf("bits=%d\n",bits);
 	/* The MX6 can do only 3840 MiB of DRAM */
 	if (bits == 32)
 		return 0xf0000000;

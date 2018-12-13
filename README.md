@@ -2,7 +2,15 @@
   <h1>iMX6 Uboot 2015</h1>
 </div>
 
-> This is the source code from [freescale imx 2015].
+<br>
+
+<div align="center">
+  <a href="https://travis-ci.org/edwinlaiktc/uboot-2015">
+    <img src="https://travis-ci.org/edwinlaiktc/uboot-2015.svg?branch=master" alt="Build status" />
+  </a>
+</div>
+
+> This is the source code from [freescale imx 2015 branch].
 <br >Modified by Edwin, for customer LPDDR2 platform,
 <br >built with iMX6 series controller.
 <br >With SD card ONLY, and output with Rs232.
@@ -13,7 +21,8 @@
     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 ### About
- * License : [License]
+ * License : 
+ * Source(freescale original) : [imx uboot 2015.4 src]
 
 ### Release Note
  * Current Modified Version : v1.0.0
@@ -24,7 +33,7 @@
 
 `Developed by : RD Module | Edwin Lai`
 
-
-[freescale imx 2015]: <http://git.freescale.com/git/cgit.cgi/imx/uboot-imx.git/snapshot/uboot-imx-imx_v2015.04_3.14.52_1.1.0_ga.tar.gz>
-[Modified Note]: (./CHANGELOG.md)
-[License]: (./LICENSE)
+[freescale imx 2015 branch]: <http://git.freescale.com/git/cgit.cgi/imx/uboot-imx.git/?h=imx_v2015.04_3.14.52_1.1.0_ga>
+[imx uboot 2015.4 src]: <http://git.freescale.com/git/cgit.cgi/imx/uboot-imx.git/snapshot/uboot-imx-imx_v2015.04_3.14.52_1.1.0_ga.tar.gz>
+[Modified Note](CHANGELOG.md)
+[License](LICENSE)

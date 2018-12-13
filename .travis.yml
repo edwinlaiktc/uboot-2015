@@ -40,8 +40,8 @@ env:
     - PATH=/tmp/dtc:$PATH
     - BUILD_DIR=build
     - CROSS_COMPILE=""
-    - HOSTCC="cc"
-    - HOSTCXX="c++"
+    - HOSTCC="gcc"
+    - HOSTCXX="g++"
     - TEST_CONFIG_CMD=""
     - ARCH="arm"
 
@@ -60,6 +60,9 @@ before_script:
 
 script:
  # the execution sequence for each test
+ - export ARCH=arm
+ - export CROSS_COMPILE=arm-linux-gnueabihf-
+ - printenv
  - echo ${TEST_CONFIG_CMD}
  - ${TEST_CONFIG_CMD}
  - echo ${TEST_CMD}
@@ -69,70 +72,23 @@ matrix:
   include:
   # we need to build by vendor due to 50min time limit for builds
   # each env setting here is a dedicated build
+     - os: linux
+          addons:
+            apt:
+              sources:
+                - ubuntu-toolchain-r-test
+              packages:
+                - arm-linux-gnueabihf-gcc
+          env:
+             - MATRIX_EVAL="CC=gcc && CXX=g++"
+
     - env:
-        - TEST_CMD="./MAKEALL -a arm -v atmel"
-          INSTALL_TOOLCHAIN="arm"
-          CROSS_COMPILE="/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi/arm-linux-gnueabi-"
-    - env:
-        - TEST_CMD="./MAKEALL -a arm -v freescale"
-          INSTALL_TOOLCHAIN="arm"
-          CROSS_COMPILE="/opt/eldk-5.4/armv5te/sysroots/i686-eldk-linux/usr/bin/armv5te-linux-gnueabi/arm-linux-gnueabi-"
-    - env:
-        - ARCH = "arm"
-          HOSTCC  = "arm-linux-gnueabihf-gcc"
-          HOSTCXX  = "arm-linux-gnueabihf-g++"
-          CROSS_COMPILE = "arm-linux-gnueabihf-"
+#        - ARCH = "arm"
+#          HOSTCC  = "arm-linux-gnueabihf-gcc"
+#          HOSTCXX  = "arm-linux-gnueabihf-g++"
+#          CROSS_COMPILE = "arm-linux-gnueabihf-"
           TEST_CONFIG_CMD="make mx6_ktc_defconfig"
           TEST_CMD="make -j4"
-    - env:
-        - TEST_CONFIG_CMD="make sandbox_defconfig"
-          TEST_CMD="make -j4"
-          HOSTCC  = "clang"
-          HOSTCXX  = "clang++"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mips"
-          INSTALL_TOOLCHAIN="mips"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mpc512x"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mpc5xx"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mpc5xxx"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mpc8260"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mpc83xx"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mpc85xx"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mpc86xx"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman mpc8xx"
-          INSTALL_TOOLCHAIN="ppc"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards siemens"
-          INSTALL_TOOLCHAIN="arm"
-    - env:
-        - TEST_CONFIG_CMD="tools/buildman/buildman --list-tool-chains"
-          TEST_CMD="tools/buildman/buildman --list-error-boards ti"
-          INSTALL_TOOLCHAIN="arm"
 
     # QA jobs for code analytics
     # static code analysis with cppcheck (we can add --enable=all later)

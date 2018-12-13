@@ -30,9 +30,10 @@
 
 ### Copyright
 Disclaimer: Everything you see here are free for studying and none-profit usage.
-Also make sure you comply with the [license](LICENSE).
+Also make sure you comply with the [license](Licenses).
 
 `Copyright © Kingston Technology Corp.`
+
 `Developed by : RD Module | Edwin Lai & Sam Cheng`
 
 [freescale imx 2015 branch]: <http://git.freescale.com/git/cgit.cgi/imx/uboot-imx.git/?h=imx_v2015.04_3.14.52_1.1.0_ga>

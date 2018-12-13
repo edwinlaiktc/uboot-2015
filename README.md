@@ -6,19 +6,22 @@
 
 <div align="center">
 	This is the source code from [freescale imx 2015 branch].
-	<br>Modified by Edwin, for customer LPDDR2 platform,
-	<br>built with iMX6 series controller.
-	<br>With SD card ONLY, and output with Rs232.
-	<br>This iMX6 UBoot 2015 is for LPDDR2 DRAM,but also can be used with LPDDR3 if needed.
+	<br>Modified by Edwin, for customer LPDDR2 platform, built with iMX6 series controller.
+	<br>With SD card ONLY, and output with Rs232, compatible with both LPDDR2 and LPDDR3.
 </div>
+
+<br>
 
 <div align="center">
   <a href="https://travis-ci.org/edwinlaiktc/uboot-2015">
     <img src="https://travis-ci.org/edwinlaiktc/uboot-2015.svg?branch=master" alt="Build status" />
   </a>
+  <a href="https://ftp.gnu.org/gnu/gcc/">
+    <img src="https://img.shields.io/badge/gcc-4.8%20%7C%205.4.0-brightgreen.svg" alt="Compiler"/>
+  </a>
 </div>
 
-<br >
+<br>
 
     The program is provided AS IS with NO WARRANTY OF ANY KIND,
     INCLUDING THE WARRANTY OF DESIGN,
@@ -32,20 +35,20 @@
  * Current Modified Version : v1.0.0
  * Modified Note : [[Modified Note](CHANGELOG.md)]
 
-#### Uboot Compiler mapping table
+### Uboot Compiler mapping table
 | Version | Compiler | ARCH | Platform |
 | ----------------- | ------------- | ----- | ------------- |
 | imx-uboot-2015 | GCC4.8, GCC5.4.0 | arm | Ubuntu16.04LTS |
 
 ## Build your own UBoot
-#### Requirements
+### Requirements
 ```bash
 sudo apt-get install libc6-armel-cross libc6-dev-armel-cross binutils-arm-linux-gnueabi libncurses5-dev
 sudo apt-get install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
 sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
 ```
 
-#### Complied uboot
+### Complied uboot
 To build uboot, just running script __build_uboot.sh__. <br>
 
 ```bash
@@ -53,7 +56,7 @@ To build uboot, just running script __build_uboot.sh__. <br>
 ./build_uboot.sh <your_platform_defconfig>
 ```
 
-#### Dump to SD Card
+### Dump to SD Card
 Also, running script __dd_uboot.sh__ to dump uboot to specific address of SD card. <br>
 Default device name is "c", which fit to my usage, change it if needed.
 

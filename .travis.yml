@@ -4,7 +4,7 @@
 # build U-Boot on Travis CI - https://travis-ci.org/
 
 language: c
-
+dist: xenial
 cache:
  - apt
 
@@ -72,16 +72,6 @@ matrix:
   include:
   # we need to build by vendor due to 50min time limit for builds
   # each env setting here is a dedicated build
-     - os: linux
-          addons:
-            apt:
-              sources:
-                - ubuntu-toolchain-r-test
-              packages:
-                - arm-linux-gnueabihf-gcc
-          env:
-             - MATRIX_EVAL="CC=gcc && CXX=g++"
-
     - env:
 #        - ARCH = "arm"
 #          HOSTCC  = "arm-linux-gnueabihf-gcc"

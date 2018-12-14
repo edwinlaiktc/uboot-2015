@@ -118,8 +118,7 @@ unsigned imx_ddr_size(void)
 	unsigned misc = readl(&mem->misc);
 	int bits = 11 + 0 + 0 + 1;      /* row + col + bank + width */
 
-	printf("\ndefault bits=%d\n
-		row + col + bank + width(11 + 0 + 0 + 1)\n", bits);
+	printf("\ndefault bits=%d\nrow + col + bank + width(11 + 0 + 0 + 1)\n", bits);
 	bits += ESD_MMDC_CTL_GET_ROW(ctl);
 	printf("Add Row, bits=%d\n", bits);
 	bits += col_lookup[ESD_MMDC_CTL_GET_COLUMN(ctl)];
